@@ -1,6 +1,15 @@
 const AccountModel = require("../Models/accountModel"); //imports AccountModel
+const {validationResult} = require("express-validator")
 
 const createAccountController = async (req, res) => {
+
+  const errors = validationResult(req)
+
+  if (!errors.isEmpty()) {
+    return res.json({message:{error1:errors.array()[0].msg,error2:errors.array()[1].msg}})
+  }
+
+
   const { id, name, number, type } = req.body;
 
   const newaccount = new AccountModel({

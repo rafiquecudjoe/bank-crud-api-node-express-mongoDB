@@ -134,9 +134,9 @@ ID -  Optional  - This is the Object ID of the already created bank if Any
 
 ## Responses
 
-  ![alt text](https://github.com/rafiquecudjoe/simple-bank-crud-api-node.js-express/blob/master/Response1.png?raw=true)
+  ![alt text](https://github.com/rafiquecudjoe/bank-crud-api-node-express-mongoDB/blob/master/Response1.png?raw=true)
 
-   ![alt text](https://github.com/rafiquecudjoe/simple-bank-crud-api-node.js-express/blob/master/Response2.png?raw=true)
+   ![alt text](https://github.com/rafiquecudjoe/bank-crud-api-node-express-mongoDB/blob/master/Response2.png?raw=true)
 
 
 ## Status and Errors
