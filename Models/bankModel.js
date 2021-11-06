@@ -1,6 +1,6 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
-const { Schema } = mongoose
+const { Schema } = mongoose;
 
 const bankSchema = new Schema({
   nameOfBank: {
@@ -22,25 +22,18 @@ const bankSchema = new Schema({
   tel: {
     required: true,
     type: String,
+  },
+  accounts: [
+    {
+      accountsId: {
+        required: true,
+        type: Schema.Types.ObjectId,
+        ref: "Account",
+      },
     },
-    accounts: [
-        {
-            accountsId: {
-                required: true,
-                type: Schema.Types.ObjectId,
-                ref:"Account"
-          }
-      }
-  ]
-  
+  ],
 });
 
+const BankModel = mongoose.model("Bank", bankSchema);
 
-const BankModel = mongoose.model("Bank", bankSchema)
-
-module.exports = BankModel
-
-
-
-
-
+module.exports = BankModel;

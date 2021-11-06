@@ -15,8 +15,8 @@ const accountSchema = new Schema({
     required: true,
     type: String,
   },
- 
-  bankId:{type:Schema.Types.ObjectId, ref:"Bank" ,required:true}
+
+  bankId: { type: Schema.Types.ObjectId, ref: "Bank", required: true },
 });
 
 const AccountModel = mongoose.model("Account", accountSchema);
