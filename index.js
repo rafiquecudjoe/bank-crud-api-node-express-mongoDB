@@ -3,12 +3,35 @@ const ConnectDB = require('./DB')
 const BankRouter = require("./Routes/bank")
 const AccountRouter = require("./Routes/account.");
 const UserRouter = require("./Routes/user");
-require("dotenv").config()
+require("dotenv").config('')
+const swaggerUi = require('swagger-ui-express')
+const swaggerJsDoc = require("swagger-jsdoc")
 
 const app = express();
 
-app.use(express.json());
+const swaggerOptions = {
+  swaggerDefinition: {
+    swagger:'2.0.0',
+    info: {
+      title: "Customer API",
+      description: "Customer API Information",
+      contact: {
+        name:"Amazing Developer"
+      },
 
+      servers: [
+        {url: "http://localhost:5000"}
+      ]
+
+    }
+  },
+  apis:["./Routes*/account.js"]
+}
+const swaggerDocs = swaggerJsDoc(swaggerOptions)
+
+
+app.use(express.json());
+app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(swaggerDocs))
 const Port = process.env.PORT
 
 

@@ -7,7 +7,49 @@ const {
 } = require("../Controllers/account");
 const isAuth = require("../Middleware/is-Auth");
 
+
+
 const AccountRouter = express();
+
+// Routes
+/** 
+ * @swagger
+ * components:
+ *    schema:
+ *    Account:
+ *       name: 
+             required: true
+             type: String
+  
+         number: 
+            required: true`
+            type: String
+  
+         type: 
+            required: true
+            type: String
+  
+
+        bankId:
+             type: Schema.Types.ObjectId,
+             ref: "Bank"
+             required: true 
+
+ * /account:
+ * post:
+ *     description: Used to create a Bank Account
+ *      Responses:
+ *         '200'
+ *             description: A successful Response
+ *      
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ **/
 
 AccountRouter.post(
   "/account",isAuth,
