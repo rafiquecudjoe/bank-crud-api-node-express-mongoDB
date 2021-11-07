@@ -7,14 +7,15 @@ const {
   removeBankController,
 } = require("../Controllers/bank");
 const BankModel = require("../Models/bankModel");
+const isAuth = require("../Middleware/is-Auth")
 
 
 const BankRouter = express();
 
-BankRouter.get("/banks/:id?", listBankController);
+BankRouter.get("/banks/:id?",isAuth, listBankController);
 
 BankRouter.post(
-  "/bank",
+  "/bank",isAuth,
   [
     body("nameOfBank").trim().not().isEmpty().withMessage('Name cannot be empty'),
     body("location").trim().not().isEmpty().withMessage('Location cannot be empty'),
@@ -32,9 +33,9 @@ BankRouter.post(
   createBankController
 );
 
-BankRouter.put("/bank", updateBankController);
+BankRouter.put("/bank",isAuth, updateBankController);
 
-BankRouter.delete("/bank", removeBankController);
+BankRouter.delete("/bank",isAuth, removeBankController);
 
 
 module.exports = BankRouter;

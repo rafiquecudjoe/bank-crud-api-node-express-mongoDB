@@ -2,6 +2,7 @@ const UserModel = require("../Models/userModel");
 const { validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
+const jwt = require("jsonwebtoken");
 
 const saltRounds = 10;
 
@@ -57,7 +58,12 @@ const signinUserController = async (req, res) => {
         const compare = await bcrypt.compare(password, hash);
 
         if (compare === true) {
-          res.status(200).send("User logged in Successfully");
+          const token =  jwt.sign(
+            { name: user.name, email: user.email, userId: user._id },
+            "Helloiamasecretkey",
+            { expiresIn: "1hr" }
+          );
+          res.status(200).json({message:"User SIgned in",data:token});
         } else {
           res.status(300).send("Username of Password Invalid");
         }

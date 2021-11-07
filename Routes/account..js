@@ -5,11 +5,12 @@ const {
   createAccountController,
   listAccountController,
 } = require("../Controllers/account");
+const isAuth = require("../Middleware/is-Auth");
 
 const AccountRouter = express();
 
 AccountRouter.post(
-  "/account",
+  "/account",isAuth,
   [
     body("name").trim().not().isEmpty().withMessage("Name cannot be empty"),
     body("number").trim().not().isEmpty().withMessage("Number cannot be empty"),
@@ -19,6 +20,6 @@ AccountRouter.post(
   createAccountController
 );
 
-AccountRouter.get("/account/:id?", listAccountController);
+AccountRouter.get("/account/:id?",isAuth, listAccountController);
 
 module.exports = AccountRouter;
